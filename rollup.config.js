@@ -17,10 +17,17 @@ export default [
                 exports:'named'
             }
         ],
-        plugins:[
-            terser(),
+        plugins:[ 
+            babel({
+                exclude:'node_modules/**',
+                presets:[['@babel/preset-react', {
+                    runtime: 'automatic'
+                  }]
+                  ]
+            }),
             external(),
-            resolve()
+            resolve(),
+            terser()
         ]
     }
 ]
